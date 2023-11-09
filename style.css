@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+}
+
+.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #212529;
+  color: white;
+  padding: 25px 60px;
+  margin-bottom:30px ;
+}
+
+.cart{
+  position: relative;
+  background-color: #fff;
+  color: #212529;
+  padding: 5px;
+  font-size: 30px;
+  border-radius: 4px;
+}
+
+.cart-amount{
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 3px;
+
+}
+
+.shop{
+  display: grid;
+  grid-template-columns: repeat(4,223px);
+  gap: 30px;
+  justify-content: center;
+}
+
+@media(max-width: 1000px){
+  .shop{
+    grid-template-columns: repeat(2,223px);
+  }
+}
+
+@media(max-width: 500px){
+  .shop{
+    grid-template-columns: repeat(1,223px);
+  }
+}
+
+.item{
+  border: 2px solid #212529;
+  border-radius: 4px;
+}
+
+.details{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px; 
+}
+
+.price-quantity{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-quantity h2{
+  user-select: none;
+}
+
+.buttons{
+  display:flex;
+  gap: 8px;
+  font-size: 16px;
+  user-select: none;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.bi-dash-lg{
+  color: red;
+  cursor: pointer;
+}
+
+.bi-plus-lg{
+  cursor: pointer;
+  color: green;
+}
+
+a:link{
+  text-decoration: none;
+  color: white;
+}
+
+a:visited{
+  text-emphasis: none;
+  color: white;
+}
+
+.checkout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.total-bill{
+  display: flex;
+  justify-content: center;
+}
+
+.checkout-btn {
+  padding: 6px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+}
+
+.clear-cart-btn {
+  padding: 6px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+}
+
+.product-cards{
+  justify-content: center;
+  border-width: 2px;
+  display: grid;
+  grid-template-columns: repeat(1,320px);
+  margin-top: 10px;
+}
+
+.card{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 15px;
+  border: 2px solid #212529;
+  border-radius: 6px;
+}
+
+.details{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.title-price-x{
+  display: flex;
+  flex-direction: row;
+  width: 195px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-price{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-price{
+  background: #212529;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.bi-x-lg{
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.plus-x-minus{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
