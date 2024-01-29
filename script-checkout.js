@@ -2,9 +2,12 @@ let storedBasket = localStorage.getItem('basket');
 let basket = storedBasket ? JSON.parse(storedBasket) : [] ;
 let cart = document.querySelector(".product-cards")
 let shopItemsData = JSON.parse(localStorage.getItem('shopItemsData'));
+let totalItem = 0;
+
+
 let generateCart = (basket) => {
 
-  let totalItem = 0;
+  totalItem = 0;
   basket.forEach((z) => {
     totalItem += z.item;
   })
@@ -23,7 +26,7 @@ let generateCart = (basket) => {
       <div class="title-price-x">
         <h4 class="title-price">
           <p>${shopItem.name}</p>
-          <p class="product-price">$ 45</p>
+          <p class="product-price">$ ${price}</p>
         </h4>
         <i onclick="Xfunction(${id})" class="bi bi-x-lg"></i>
       </div>
@@ -51,12 +54,27 @@ let generateTotalBillButtons = (basket) => {
     <h2>Total Bill : $&nbsp;</h2>
     <h2 class="bill-amount"> ${total}</h2>
   </div>
-  <div class="buttons">
+  <div class="checkout-buttons">
     <button class="checkout-btn">Checkout</button>
     <button onclick="clearCart()" class="clear-cart-btn">Clear Cart</button>
   </div>
 </div>`
 }
+
+let generateCartEmpty = () => {
+  if (totalItem === 0) {
+    document.querySelector('.is-empty').innerHTML = `
+    <div class="cart-empty-container">
+      <p class="cart-empty-heading">Your cart is empty!</p>
+      <img class="doggy-img" src="images/sad-doggy.png" alt="Img not found!"></img>
+      <a  href="index.html"><button class="go-back-btn"> Add Items </button></a>
+    </div>
+    `
+
+    document.querySelector('.total-bill-buttons').innerHTML = '';
+  }
+}
+
 
 let increment = (id) => {
   let selectedItem = id;
@@ -118,11 +136,15 @@ let update = (id) => {
   generateTotalBillButtons(basket);
   generateCart(basket);
   localStorage.setItem('basket', JSON.stringify(basket));
+
+  // CHECKING IF BASKET IS EMPTY
+
+  generateCartEmpty();
 }
 
 let clearCart = () => {
   basket = [];
-  localStorage.setItem('basket',[]);
+  localStorage.setItem('basket',JSON.stringify([]));
   cart.innerHTML = '';
   update();
 }
@@ -133,14 +155,7 @@ let Xfunction = (id) => {
   basketItem.item = 0;
   update(selectedItem.id);
 }
-if(basket){
-  generateTotalBillButtons(basket);
-}else{
 
-}
-
+generateTotalBillButtons(basket);
 generateCart(basket);
-
-emptyCart = () => {
-  
-}
+generateCartEmpty();

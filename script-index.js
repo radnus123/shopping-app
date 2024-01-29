@@ -35,26 +35,22 @@ localStorage.setItem('shopItemsData', JSON.stringify(shopItemsData));
 let basket = []
 let total = 0
 let generateShop = (basket) => {
-   shop.innerHTML = shopItemsData.map((x) => {
-    let {id, name, price, desc, img} = x;
-    let basketItem = basket.find(item => item.id === id) || { item: 0};
-    return `<div id = product-id-${id} class="item">
-    <img width="220" src="${img}" alt="">
-    <div class="details">
-      <h3>${name}</h3>
-      <p>${desc}.</p>
-      <div class="price-quantity">
-        <h2>$${price}</h2>
-        <div class="buttons">
-          <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
-          <div id=${id} class="quantity">${basketItem.item}</div>
-          <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
+  shop.innerHTML = shopItemsData.map((x) => {
+    let { id, name, price, desc, img } = x;
+    let basketItem = basket.find((item) => item.id === id) || { item: 0 };
+    return `
+      <div id="product-id-${id}" class="item">
+      <a href="./product.html?id=${id}" class="item-link"><img width="220" src="${img}" alt=""></a>
+        <div class="details">
+          <h3>${name}</h3>
+          <p>${desc}.</p>
+          <div class="price-quantity">
+            <h2>$${price}</h2>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>`
+      </div>`;
   }).join("");
-}
+};
 
 generateShop(basket);
 
@@ -130,3 +126,6 @@ let update = (id) => {
 
 let hello = JSON.parse(localStorage.getItem('shopItemsData'))
 console.log(shopItemsData)
+
+
+
