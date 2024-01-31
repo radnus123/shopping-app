@@ -13,7 +13,6 @@ const productId = getProductId();
 console.log(productId);
 const product = shopItemsData.find((x) => x.id === productId);
 
-document.title = product.name;
 
 let generateProductPage = () =>{
   let {id,name,price,desc,img} = product;
@@ -44,20 +43,6 @@ let generateProductPage = () =>{
   </div>
   </div>
   `
-}
-
-const addBtn = () => {
-  const basketItem = basket.find((x) => x.id === productId);
-  if(!basketItem){
-    basket.push({
-      id:productId,
-      item:1
-    })
-  }
-
-  localStorage.setItem('basket', JSON.stringify(basket));
-}
-
 
 let total = 0;
 basket.forEach((x) => {
@@ -65,6 +50,36 @@ basket.forEach((x) => {
 });
 
 document.querySelector('.cart-amount').innerHTML = total;
+}
 
-generateProductPage();
+const addBtn = () => {
+  const basketItem = basket.find((x) => x.id === productId);
+  const quantityToAdd = 1;  // You might want to provide an input field for quantity.
+  
+  if (!basketItem) {
+    basket.push({
+      id: productId,
+      item: quantityToAdd,
+    });
+  } else {
+    basketItem.item += quantityToAdd;
+  }
+
+  console.log(basket);
+  localStorage.setItem('basket', JSON.stringify(basket));
+};
+
+
+if(!product){
+  console.log("Page Not Found")
+  document.title = "Not Found"
+  document.querySelector(".product-page-container").innerHTML =`
+  <img class="doggy-img" src="images/sad-doggy.png" alt="Img not found!">
+  `
+}
+else {
+  document.title = product.name;
+  generateProductPage();
+}
+
 

@@ -52,11 +52,11 @@ let generateTotalBillButtons = (basket) => {
   document.querySelector('.total-bill-buttons').innerHTML = `
   <div class="total-bill">
     <h2>Total Bill : $&nbsp;</h2>
-    <h2 class="bill-amount"> ${total}</h2>
+    <h2 class="bill-amount">${total}</h2>
   </div>
   <div class="checkout-buttons">
     <button class="checkout-btn">Checkout</button>
-    <button onclick="clearCart()" class="clear-cart-btn">Clear Cart</button>
+    <a href="index.html"><button class="back-to-buy-btn">Back To Buy</button></a>
   </div>
 </div>`
 }
