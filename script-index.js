@@ -29,6 +29,34 @@ let shopItemsData = [
     price: 45,
     desc: "This is a very good looking suit",
     img: "images/img-4.jpg"
+  },
+  {
+    id: 'jkjagsvbnghjkdjgfs',
+    name: "Casual Shirt",
+    price: 45,
+    desc: "This is a good casual shirt for casualware",
+    img: "images/img-1.jpg"
+  },
+  {
+    id: 'jkjagsyiuoyasdf',
+    name: "Office Shirt",
+    price: 100,
+    desc: "This will make you look good in office meetings",
+    img: "images/img-2.jpg"
+  },
+  {
+    id: 'jkjagdfhjudyfgdsdf',
+    name: "T Shirt",
+    price: 25,
+    desc: "This is a great casualware T-Shirt",
+    img: "images/img-3.jpg"
+  },
+  {
+    id: 'jkjadfgjdksdhgjgfs',
+    name: "Mens Suit",
+    price: 45,
+    desc: "This is a very good looking suit",
+    img: "images/img-4.jpg"
   }
 ]
 localStorage.setItem('shopItemsData', JSON.stringify(shopItemsData));

@@ -15,6 +15,7 @@ let generateCart = (basket) => {
   cart.innerHTML = basket.map((x) => {
     let{id, item} = x;
     let shopItem = shopItemsData.find((y) => y.id === id);
+    let actualPrice = shopItem.price;
     let price = item*shopItem.price;
     if(!item){
       return
@@ -26,9 +27,11 @@ let generateCart = (basket) => {
       <div class="title-price-x">
         <h4 class="title-price">
           <p>${shopItem.name}</p>
-          <p class="product-price">$ ${price}</p>
         </h4>
+        <div class="price-x">
+        <p class="product-price">$ ${actualPrice}</p>
         <i onclick="Xfunction(${id})" class="bi bi-x-lg"></i>
+        </div>
       </div>
       <div class="plus-x-minus">
         <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
@@ -57,6 +60,7 @@ let generateTotalBillButtons = (basket) => {
   <div class="checkout-buttons">
     <button class="checkout-btn">Checkout</button>
     <a href="index.html"><button class="back-to-buy-btn">Back To Buy</button></a>
+    <button onclick="clearCart()" class="clear-cart-btn"><i class="bi bi-trash3"></i></button>
   </div>
 </div>`
 }

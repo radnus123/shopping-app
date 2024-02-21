@@ -69,17 +69,7 @@ const addBtn = () => {
   localStorage.setItem('basket', JSON.stringify(basket));
 };
 
-
-if(!product){
-  console.log("Page Not Found")
-  document.title = "Not Found"
-  document.querySelector(".product-page-container").innerHTML =`
-  <img class="doggy-img" src="images/sad-doggy.png" alt="Img not found!">
-  `
-}
-else {
   document.title = product.name;
   generateProductPage();
-}
 
 
